@@ -25,14 +25,14 @@ export const routesArray = [
         path: 'home',
         exact: true,
       },
-      {
-        element: <Users />,
+      // {
+      //   element: <Users />,
 
-        path: 'users',
-        exact: true,
-        children: [],
-        // loadData: loadData,
-      },
+      //   path: 'users',
+      //   exact: true,
+      //   children: [],
+      //   // loadData: loadData,
+      // },
       // {
       //     element: <AdminsList.element />,
       //     loadData: AdminsList.loadData,

@@ -16,7 +16,9 @@ const render = (req, store = {}, context = {}, isNotFound = false) => {
     content = renderToString(
       <Provider store={store}>
 
-        <StaticRouter location={req.path}>{<Routes />}</StaticRouter>
+        <StaticRouter location={req.path}>
+          <Routes />
+        </StaticRouter>
       </Provider>
 
 
@@ -31,7 +33,7 @@ const render = (req, store = {}, context = {}, isNotFound = false) => {
 
     )
   }
-    return ` <html>
+  return ` <html>
   <head>
   <link rel="icon" href="favicon.ico"/>
   </head>
@@ -41,7 +43,7 @@ const render = (req, store = {}, context = {}, isNotFound = false) => {
     <script> window.INITIAL_STATE = ${JSON.stringify(store.getState())}</script>
   </body>
 </html>`
-  
-  ;
+
+    ;
 };
 export default render;

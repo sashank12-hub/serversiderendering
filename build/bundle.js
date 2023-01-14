@@ -46,13 +46,15 @@ var routesArray = [{
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_client_Home__WEBPACK_IMPORTED_MODULE_3__["default"], null),
     path: 'home',
     exact: true
-  }, {
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_client_Users__WEBPACK_IMPORTED_MODULE_4__["default"], null),
-    path: 'users',
-    exact: true,
-    children: []
-    // loadData: loadData,
   },
+  // {
+  //   element: <Users />,
+
+  //   path: 'users',
+  //   exact: true,
+  //   children: [],
+  //   // loadData: loadData,
+  // },
   // {
   //     element: <AdminsList.element />,
   //     loadData: AdminsList.loadData,
@@ -132,9 +134,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Home = function Home() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
     to: "/users"
   }, " users"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    type: "button",
     onClick: function onClick() {
       return window.alert('sashank');
     }
@@ -181,24 +184,74 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions */ "./client/actions/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_3__);
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
 
 
-var Users = function Users(_ref) {
-  var users = _ref.users,
-    fetch = _ref.fetch;
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    // fetch(); //fetch in client side
-  }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
-    to: "/home"
-  }, " Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "user"), users && users.map(function (user) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-      key: user.id
-    }, user.name);
-  }));
-};
+
+// const Users = (props) => {
+//   useEffect(() => {
+
+//     if(props.users.length<=0){
+//       props.fetch(); 
+//     }
+
+//   }, []);
+//   return (
+//     <>
+//       <Link to="/home"> Home</Link>
+//       <h1>user</h1>
+
+//       {props.users && props.users?.map((user) => <p key={user.id}>{user.name}</p>)}
+
+//     </>
+//   );
+// };
+// export default withConnect(Users);
+
+
+var Users = /*#__PURE__*/function (_Component) {
+  _inherits(Users, _Component);
+  var _super = _createSuper(Users);
+  function Users() {
+    _classCallCheck(this, Users);
+    return _super.apply(this, arguments);
+  }
+  _createClass(Users, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      console.log('***');
+      this.props.fetch('comments');
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props$users;
+      console.log(this.props, '****');
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Users"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+        to: "/home"
+      }, " Home"), this.props.users && ((_this$props$users = this.props.users) === null || _this$props$users === void 0 ? void 0 : _this$props$users.map(function (user) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+          key: user.id
+        }, user.name);
+      })));
+    }
+  }]);
+  return Users;
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     users: state === null || state === void 0 ? void 0 : state.users
@@ -206,16 +259,18 @@ var mapStateToProps = function mapStateToProps(state) {
 };
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    fetch: function fetch() {
-      return dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_2__.fetchUser)());
+    fetch: function fetch(x) {
+      return dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_2__.fetchUser)(x));
     }
   };
 };
-Users.displayName = 'sashank';
-Users.loadData = function (store) {
-  return store.dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_2__.fetchUser)());
-};
 var withConnect = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(mapStateToProps, mapDispatchToProps);
+Users.loadData = function (store) {
+  return store.dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_2__.fetchUser)('users'));
+};
+if (typeof window !== 'undefined') {
+  // export default React.memo(withConnect(Users));
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (withConnect(Users));
 
 /***/ }),
@@ -239,20 +294,23 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var FETCH_USERS = 'fetch_users';
-var fetchUser = function fetchUser() {
+var fetchUser = function fetchUser(x) {
   return /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(dispatch) {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(dispatch, getState
+    // axiosInstance
+    ) {
       var res;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_0___default().get('https://jsonplaceholder.typicode.com/users');
+            return axios__WEBPACK_IMPORTED_MODULE_0___default().get("https://jsonplaceholder.typicode.com/".concat(x));
           case 2:
             res = _context.sent;
+            // it will call /api/users
             dispatch({
               type: FETCH_USERS,
-              payload: res.data
+              payload: res.data.slice(0, 11)
             });
           case 4:
           case "end":
@@ -260,7 +318,7 @@ var fetchUser = function fetchUser() {
         }
       }, _callee);
     }));
-    return function (_x) {
+    return function (_x, _x2) {
       return _ref.apply(this, arguments);
     };
   }();
@@ -314,11 +372,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-thunk */ "redux-thunk");
 /* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_thunk__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _client_reducers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../client/reducers */ "./client/reducers/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function (initialState) {
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function (initialState, req) {
+  // const axiosInstance =axios.create({
+  //   baseURL : 'https://jsonplaceholder.typicode.com',
+  //   headers :{cookie:req.get('cookie')||''}
+  // })
   var store = (0,redux__WEBPACK_IMPORTED_MODULE_0__.legacy_createStore)(_client_reducers__WEBPACK_IMPORTED_MODULE_2__["default"], initialState, (0,redux__WEBPACK_IMPORTED_MODULE_0__.applyMiddleware)((redux_thunk__WEBPACK_IMPORTED_MODULE_1___default())));
+  // .withExtraArgument(axiosInstance)));
   return store;
 });
 
@@ -415,6 +481,16 @@ module.exports = require("cors");
 /***/ ((module) => {
 
 module.exports = require("express");
+
+/***/ }),
+
+/***/ "express-http-proxy":
+/*!*************************************!*\
+  !*** external "express-http-proxy" ***!
+  \*************************************/
+/***/ ((module) => {
+
+module.exports = require("express-http-proxy");
 
 /***/ }),
 
@@ -571,7 +647,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _reduxstoreHelper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reduxstoreHelper */ "./server/reduxstoreHelper.js");
-/* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Routes */ "./Routes.js");
+/* harmony import */ var express_http_proxy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! express-http-proxy */ "express-http-proxy");
+/* harmony import */ var express_http_proxy__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(express_http_proxy__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Routes */ "./Routes.js");
 
 
 var express = __webpack_require__(/*! express */ "express");
@@ -579,14 +657,22 @@ var express = __webpack_require__(/*! express */ "express");
 
 
 
+
 var cors = __webpack_require__(/*! cors */ "cors");
 var app = express();
+
+// app.use('/api',proxy('https://jsonplaceholder.typicode.com',{
+//   proxyReqOptDecorator(options){
+//     options.headers['x-forwarded-host'] = 'localhost:4000';
+//     return options;
+//   }
+// }))
 app.use(express["static"]('public'));
-app.use(cors());
+// app.use(cors());
 app.get('*', function (req, res) {
   var _matchRoutes;
-  var store = (0,_reduxstoreHelper__WEBPACK_IMPORTED_MODULE_4__["default"])({});
-  var promises = (_matchRoutes = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.matchRoutes)(_Routes__WEBPACK_IMPORTED_MODULE_5__.route, req.path)) === null || _matchRoutes === void 0 ? void 0 : _matchRoutes.map(function (_ref) {
+  var store = (0,_reduxstoreHelper__WEBPACK_IMPORTED_MODULE_4__["default"])({}, req);
+  var promises = (_matchRoutes = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.matchRoutes)(_Routes__WEBPACK_IMPORTED_MODULE_6__.route, req.path)) === null || _matchRoutes === void 0 ? void 0 : _matchRoutes.map(function (_ref) {
     var _route$element, _route$element$type;
     var route = _ref.route;
     if (route !== null && route !== void 0 && (_route$element = route.element) !== null && _route$element !== void 0 && (_route$element$type = _route$element.type) !== null && _route$element$type !== void 0 && _route$element$type.loadData) {
@@ -602,14 +688,11 @@ app.get('*', function (req, res) {
         res.redirect(301, context.url);
       }
       res.send(content);
-    })["catch"](function (err) {
-      console.log('err', err);
-    });
+    })["catch"](function (err) {});
   } else {
     res.status(404);
     res.send((0,_renderHelper__WEBPACK_IMPORTED_MODULE_1__["default"])(req, store, {}, true));
   }
-  console.log(promises, 'promises');
 });
 app.listen(4000, function () {});
 })();
