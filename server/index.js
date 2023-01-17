@@ -5,7 +5,7 @@ import axios from 'axios';
 import { matchRoutes } from 'react-router-dom';
 import createStore from './reduxstoreHelper';
 import proxy from 'express-http-proxy'
-import { route } from '../Routes';
+import { routes } from '../Routes';
 const cors = require('cors');
 const app = express();
 
@@ -15,33 +15,37 @@ const app = express();
 //     return options;
 //   }
 // }))
-app.use(express.static('public'));
-// app.use(cors());
-app.get('*',(req, res) => {
-  const store = createStore({},req);
-  const promises = matchRoutes(route, req.path)?.map(({ route }) => {
-    if (route?.element?.type?.loadData) {
-      return route?.element?.type?.loadData(store);
-    }
-  });
-  if(promises && promises.length){
-    Promise.all(promises)
-    .then(() => {
-      const context = {};
-        const content = render(req, store, context);
-        if (context.url) {
-            res.redirect(301, context.url);
-        }
-        res.send(content);
-    })
-    .catch((err) => {
-  
-    });
-  }
-  else{
-    res.status(404);
-    res.send(render(req, store, {},true));
-  }
-  
+//  app.use(cors());
+app.use((req, res, next) => {
+  req.header('Access-Control-Allow-Origin', '*');
+  next();
 });
-app.listen(4000, () => {});
+app.use(express.static('public'));
+app.get('*', (req, res) => {
+    const store = createStore();
+    // const content = ;
+    // Logic to intialize and load data in the store
+    const promises = matchRoutes(routes, req.path).map(({route}) => {
+        return route.loadData ? route.loadData(store) : null;
+    })
+
+    Promise.all(promises).then(()=>res.send(render(req, store))).catch(err => {});
+    // // console.log(promises);
+    // Promise.all(promises).then(() => {
+    //     const context = {};
+      
+   
+    //     if (context.url) {
+    //         res.redirect(301, context.url);
+    //     }
+    //     if (context.notFound) {
+    //         res.status(404);
+    //     }
+    //     res.send(content);
+    // });
+    // res.send(content);
+});
+
+app.listen(4444, () => {
+    console.log('Listening on PORT 4444')
+});

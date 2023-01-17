@@ -4,6 +4,7 @@ import Routes from '../Routes';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import NotFound from '../client/NotFound';
+import serialize from 'serialize-javascript'
 // import { json } from 'react-router-dom';
 
 /** context is required prop to be pased
@@ -12,35 +13,37 @@ import NotFound from '../client/NotFound';
  */
 const render = (req, store = {}, context = {}, isNotFound = false) => {
   let content;
-  if (!isNotFound) {
+  // if (!isNotFound) {
     content = renderToString(
       <Provider store={store}>
 
         <StaticRouter location={req.path}>
-          <Routes />
+          <div><Routes /></div>
+         
         </StaticRouter>
       </Provider>
 
 
     );
-  }
-  else {
-    content = renderToString(
-      <Provider store={store}>
+  // }
+  // else {
+  //   content = renderToString(
+  //     <Provider store={store}>
 
-        <NotFound />
-      </Provider>
+  //       <NotFound />
+  //     </Provider>
 
-    )
-  }
+  //   )
+  // }
   return ` <html>
   <head>
   <link rel="icon" href="favicon.ico"/>
   </head>
   <body>
     <div id="root">${content}</div>
+    <script> window.INITIAL_STATE = ${serialize(store.getState())}</script>
     <script src="bundle.js"></script>
-    <script> window.INITIAL_STATE = ${JSON.stringify(store.getState())}</script>
+  
   </body>
 </html>`
 

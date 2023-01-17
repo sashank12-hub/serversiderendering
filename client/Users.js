@@ -1,62 +1,40 @@
-import { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { fetchUser } from './actions';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { connect } from "react-redux";
+import { fetchUsers } from './actions';
 
-// const Users = (props) => {
-//   useEffect(() => {
-  
-//     if(props.users.length<=0){
-//       props.fetch(); 
-//     }
-    
-//   }, []);
-//   return (
-//     <>
-//       <Link to="/home"> Home</Link>
-//       <h1>user</h1>
-    
-//       {props.users && props.users?.map((user) => <p key={user.id}>{user.name}</p>)}
-
-      
-//     </>
-//   );
-// };
-// export default withConnect(Users);
-
-import React, { Component } from 'react'
-
- class Users extends Component {
+class UsersList extends React.Component {
   componentDidMount() {
-    console.log('***')
-this.props.fetch('comments');
-}
-  render() {
-    console.log(this.props,'****')
-    return (
-      <>
-      <div>Users</div>
-      <Link to="/home"> Home</Link>
-          
-            {this.props.users && this.props.users?.map((user) => <p key={user.id}>{user.name}</p>)}
-            </>
-    )
+    // if (this.props.users.length > 0) {
+    //   return;
+    // }
+     this.props.fetch();
   }
+renderUsers(){
+  return this.props.users.length>0 && this.props.users?.map(user=><li key ={user.id}>{user.name}</li>)
+}
+    render() {
+      // console.log(this.props.users)
+        return (
+            <div>
+               
+                List of Users -
+              <ul>{this.renderUsers()}</ul>
+            </div>
+        );
+    }
 }
 const mapStateToProps = (state) => ({
-  users: state?.users,
-});
-const mapDispatchToProps = (dispatch) => ({
-  fetch: (x) => dispatch(fetchUser(x)),
-});
+    users: state?.users?.users,
+  });
+  const mapDispatchToProps = (dispatch) => ({
+    fetch: ()=>dispatch(fetchUsers()),
+  });
 
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
-Users.loadData = (store) => {
-  return store.dispatch(fetchUser('users'));
+const loadData = (store) => {
+    return store.dispatch(fetchUsers());
 };
-if(typeof window !== 'undefined'){
-  // export default React.memo(withConnect(Users));
 
-}
-
-export default withConnect(Users);
+export default {
+    loadData,
+    element: connect(mapStateToProps, mapDispatchToProps)(UsersList),
+};
