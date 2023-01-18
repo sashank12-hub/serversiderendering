@@ -4,6 +4,7 @@ import { useRoutes } from 'react-router-dom'; //Routes is like swict in prev ver
 import App from './client/App';
 import Home from './client/Home';
 import UsersList from './client/Users';
+import Career from './client/career';
 import NotFound from './client/NotFound';
 // export default () => (
 //   <>
@@ -33,6 +34,11 @@ export const routes = [
               path: 'users',
               exact:true,
           },
+          {
+            element: <Career/>,
+            path: 'career',
+            exact:true,
+          }
           // {
           //     element: <AdminsList.element />,
           //     loadData: AdminsList.loadData,

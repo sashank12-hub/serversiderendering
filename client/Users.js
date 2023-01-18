@@ -4,16 +4,12 @@ import { fetchUsers } from './actions';
 
 class UsersList extends React.Component {
   componentDidMount() {
-    // if (this.props.users.length > 0) {
-    //   return;
-    // }
      this.props.fetch();
   }
 renderUsers(){
   return this.props.users.length>0 && this.props.users?.map(user=><li key ={user.id}>{user.name}</li>)
 }
     render() {
-      // console.log(this.props.users)
         return (
             <div>
                
