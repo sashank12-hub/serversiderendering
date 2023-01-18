@@ -15,21 +15,6 @@ import NotFound from './client/NotFound';
 //   </>
 // );
 // to fetch data on server first and then to serve files we need to know what all urls need this behavior this is doneby using useRoutes
-// export const route = [
-//   { element: <App />, path: '/', exact: true },
-//   {
-//     element: <Home />,
-//     path: 'home',
-//     exact: true,
-//   },
-//   {
-//     element: <Users />,
-//     path: 'users',
-//     exact: true,
-//     // loadData: loadData,
-//   },
-//   // { path: '*', element: <NotFound /> }
-// ];
 
 export const routes = [
   {

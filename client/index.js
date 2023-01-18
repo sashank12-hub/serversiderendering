@@ -7,7 +7,6 @@ import { legacy_createStore as createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import reducers from './reducers/index';
-const store = createStore(reducers, window.INITIAL_STATE, applyMiddleware(thunk));
 const configStore = (initialState) => {
   const store = createStore(reducers, initialState, applyMiddleware(thunk));
   window.store = store;
