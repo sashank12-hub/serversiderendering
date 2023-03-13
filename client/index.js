@@ -14,7 +14,8 @@ const configStore = (initialState) => {
   return store;
 
 }
-hydrateRoot(document.querySelector('#root'), <Provider store={configStore(window.INITIAL_STATE)}>
+hydrateRoot(document.querySelector('#root'),
+ <Provider store={configStore(window.INITIAL_STATE)}>
 
   <Router><div><Routes /></div></Router>
 </Provider>)

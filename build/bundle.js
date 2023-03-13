@@ -20,10 +20,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _client_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./client/App */ "./client/App.js");
 /* harmony import */ var _client_Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./client/Home */ "./client/Home.js");
 /* harmony import */ var _client_Users__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./client/Users */ "./client/Users.js");
-/* harmony import */ var _client_NotFound__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./client/NotFound */ "./client/NotFound.js");
+/* harmony import */ var _client_career__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./client/career */ "./client/career.js");
+/* harmony import */ var _client_NotFound__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./client/NotFound */ "./client/NotFound.js");
 
 // import { Route, Routes } from 'react-router-dom';
  //Routes is like swict in prev version
+
 
 
 
@@ -38,21 +40,6 @@ __webpack_require__.r(__webpack_exports__);
 //   </>
 // );
 // to fetch data on server first and then to serve files we need to know what all urls need this behavior this is doneby using useRoutes
-// export const route = [
-//   { element: <App />, path: '/', exact: true },
-//   {
-//     element: <Home />,
-//     path: 'home',
-//     exact: true,
-//   },
-//   {
-//     element: <Users />,
-//     path: 'users',
-//     exact: true,
-//     // loadData: loadData,
-//   },
-//   // { path: '*', element: <NotFound /> }
-// ];
 
 var routes = [{
   element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_client_App__WEBPACK_IMPORTED_MODULE_2__["default"], null),
@@ -66,6 +53,10 @@ var routes = [{
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_client_Users__WEBPACK_IMPORTED_MODULE_4__["default"].element, null),
     loadData: _client_Users__WEBPACK_IMPORTED_MODULE_4__["default"].loadData,
     path: 'users',
+    exact: true
+  }, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_client_career__WEBPACK_IMPORTED_MODULE_5__["default"], null),
+    path: 'career',
     exact: true
   }
   // {
@@ -134,7 +125,9 @@ var Home = function Home() {
     onClick: function onClick() {
       return window.alert('sashank');
     }
-  }, "Im app"));
+  }, "Im app"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/career"
+  }, " career"));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
 
@@ -201,10 +194,7 @@ var UsersList = /*#__PURE__*/function (_React$Component) {
   _createClass(UsersList, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      // if (this.props.users.length > 0) {
-      //   return;
-      // }
-      this.props.fetch();
+      // this.props.fetch();
     }
   }, {
     key: "renderUsers",
@@ -219,7 +209,6 @@ var UsersList = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      // console.log(this.props.users)
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "List of Users -", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, this.renderUsers()));
     }
   }]);
@@ -275,13 +264,13 @@ var fetchUsers = function fetchUsers() {
         while (1) switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://localhost:3000/users');
+            return axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://localhost:4000/users');
           case 2:
             res = _context.sent;
             // it will call /api/users
             dispatch({
               type: FETCH_USERS,
-              payload: res.data.users
+              payload: res.data
             });
           case 4:
           case "end":
@@ -294,6 +283,30 @@ var fetchUsers = function fetchUsers() {
     };
   }();
 };
+
+/***/ }),
+
+/***/ "./client/career.js":
+/*!**************************!*\
+  !*** ./client/career.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function Career() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "career"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    onClick: function onClick() {
+      return window.location.href = '/users';
+    }
+  }, "career"));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Career);
 
 /***/ }),
 
@@ -428,7 +441,7 @@ var render = function render(req) {
 
   //   )
   // }
-  return " <html>\n  <head>\n  <link rel=\"icon\" href=\"favicon.ico\"/>\n  </head>\n  <body>\n    <div id=\"root\">".concat(content, "</div>\n    <script> window.INITIAL_STATE = ").concat(serialize_javascript__WEBPACK_IMPORTED_MODULE_6___default()(store.getState()), "</script>\n    <script src=\"bundle.js\"></script>\n  \n  </body>\n</html>");
+  return " <html>\n  <head>\n  <link rel=\"icon\" href=\"favicon.ico\"/>\n  </head>\n  <body>\n    <div id=\"root\">".concat(content, "</div>\n    <script> window.INITIAL_STATE = ").concat(serialize_javascript__WEBPACK_IMPORTED_MODULE_6___default()(store.getState()), "</script>\n    <script src=\"/bundle.js\"></script>\n  \n  </body>\n</html>");
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (render);
 
@@ -454,16 +467,6 @@ module.exports = require("babel-polyfill");
 
 /***/ }),
 
-/***/ "cors":
-/*!***********************!*\
-  !*** external "cors" ***!
-  \***********************/
-/***/ ((module) => {
-
-module.exports = require("cors");
-
-/***/ }),
-
 /***/ "express":
 /*!**************************!*\
   !*** external "express" ***!
@@ -471,16 +474,6 @@ module.exports = require("cors");
 /***/ ((module) => {
 
 module.exports = require("express");
-
-/***/ }),
-
-/***/ "express-http-proxy":
-/*!*************************************!*\
-  !*** external "express-http-proxy" ***!
-  \*************************************/
-/***/ ((module) => {
-
-module.exports = require("express-http-proxy");
 
 /***/ }),
 
@@ -642,63 +635,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var babel_polyfill__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-polyfill */ "babel-polyfill");
 /* harmony import */ var babel_polyfill__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_polyfill__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _renderHelper__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./renderHelper */ "./server/renderHelper.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "axios");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _reduxstoreHelper__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./reduxstoreHelper */ "./server/reduxstoreHelper.js");
-/* harmony import */ var express_http_proxy__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! express-http-proxy */ "express-http-proxy");
-/* harmony import */ var express_http_proxy__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(express_http_proxy__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Routes */ "./Routes.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _reduxstoreHelper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reduxstoreHelper */ "./server/reduxstoreHelper.js");
+/* harmony import */ var _Routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Routes */ "./Routes.js");
 
 
 var express = __webpack_require__(/*! express */ "express");
 
 
 
-
-
-var cors = __webpack_require__(/*! cors */ "cors");
 var app = express();
 
-// app.use('/api',proxy('https://jsonplaceholder.typicode.com',{
-//   proxyReqOptDecorator(options){
-//     options.headers['x-forwarded-host'] = 'localhost:4000';
-//     return options;
-//   }
-// }))
-//  app.use(cors());
-app.use(function (req, res, next) {
-  req.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+// app.use((req, res, next) => {
+//   req.header('Access-Control-Allow-Origin', '*');
+//   next();
+// });
 app.use(express["static"]('public'));
 app.get('*', function (req, res) {
-  var store = (0,_reduxstoreHelper__WEBPACK_IMPORTED_MODULE_4__["default"])();
-  // const content = ;
-  // Logic to intialize and load data in the store
-  var promises = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.matchRoutes)(_Routes__WEBPACK_IMPORTED_MODULE_6__.routes, req.path).map(function (_ref) {
+  var store = (0,_reduxstoreHelper__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  var promises = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.matchRoutes)(_Routes__WEBPACK_IMPORTED_MODULE_4__.routes, req.path).map(function (_ref) {
     var route = _ref.route;
     return route.loadData ? route.loadData(store) : null;
+  }).map(function (promise) {
+    if (promise) {
+      return new Promise(function (resolve, reject) {
+        promise.then(resolve())["catch"](resolve());
+      });
+    }
   });
   Promise.all(promises).then(function () {
     return res.send((0,_renderHelper__WEBPACK_IMPORTED_MODULE_1__["default"])(req, store));
   })["catch"](function (err) {});
-  // // console.log(promises);
-  // Promise.all(promises).then(() => {
-  //     const context = {};
-
-  //     if (context.url) {
-  //         res.redirect(301, context.url);
-  //     }
-  //     if (context.notFound) {
-  //         res.status(404);
-  //     }
-  //     res.send(content);
-  // });
-  // res.send(content);
 });
-
 app.listen(4444, function () {
   console.log('Listening on PORT 4444');
 });
